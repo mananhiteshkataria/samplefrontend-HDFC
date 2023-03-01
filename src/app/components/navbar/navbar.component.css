@@ -1,0 +1,78 @@
+mat-toolbar{
+    display: flex;
+    flex-direction: row;
+    background-color: #051060;
+    padding-left: 0;
+}
+.left-logos{
+  display: flex;
+  gap: 1rem;
+}
+.right-icons{
+    display: flex;
+    gap: 1.2rem;
+    justify-content: flex-end;
+    
+}
+.nav-dropdown{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.links{
+  display: flex;
+  align-items: center;
+}
+@media only screen and (max-width: 600px) {
+  .right-icons{
+    display: none;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .nav-dropdown{
+    display: none;
+  }
+}
+.dropdown {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.dd-button {
+  display: inline-block;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.dd-input {
+  display: none;
+}
+.dd-menu {
+  position: absolute;
+  top: 100%;
+  border: 1px solid rgba(211, 211, 211, 0.356);
+  border-radius: 4px;
+  padding-right: 30px;  
+  background-color: #051060;
+  list-style-type: none;
+  right: 0;
+  top:30px;
+}
+.dd-menu a{
+  text-decoration: none;
+  color: white;
+}
+.dd-input + .dd-menu {
+  display: none;
+} 
+.dd-input:checked + .dd-menu {
+  display: block;
+} 
+.dd-menu li {
+  padding: 10px 15px;
+}
+.dd-menu li a {
+  display: block;
+  margin: -10px -25px;
+  padding: 10px 20px 10px 5px;
+}

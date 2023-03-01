@@ -1,0 +1,54 @@
+@import url("../../accordians-types/accordian.css");
+
+.close-button{
+    position: absolute;
+    top:10px;
+    right:10px;
+    color: #6B7280;
+    cursor: pointer;
+}
+.dialog-title {
+    color: #374151;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: -0.01em;
+}
+
+.dialog-contents {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dialog-tabs {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 14px;
+}
+.dt-1 {
+    padding: 12px 0;
+    color: #6B7280;
+}
+
+.dt-2 {
+    padding: 12px 18px 12px 12px;
+    background-color: #F3F6FD;
+    color: #374151;
+    width: 304px;
+    border-radius: 4px;
+}
+
+.dialog-desc {
+    background-color: #F3F6FD;
+    padding: 24px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    border-radius: 4px;
+}
+.close-btn{
+    color:  #1C3FCA;
+    border-color:  #1C3FCA;
+}

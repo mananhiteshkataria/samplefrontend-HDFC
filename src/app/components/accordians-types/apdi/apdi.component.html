@@ -1,0 +1,41 @@
+<div class="accordian-container">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true"
+            #example>
+            <mat-expansion-panel-header>
+                <mat-panel-title class="expansion-title">
+                    <mat-icon class="mat-icons" *ngIf="!example.expanded">add</mat-icon>
+                    <mat-icon class="mat-icons" *ngIf="example.expanded">remove</mat-icon>
+                    Additional/Previous Deal Information
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="apdi-table w-75 m-auto">
+                <table class="table table-responsive align-middle">
+                    <thead class="table-heading">
+                        <tr>
+                            <th scope="col" style="padding-left: 32px;">Company Name</th>
+                            <th scope="col">Last Transaction</th>
+                            <th scope="col">Current Transaction</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let c of companyName" class="table-first-column">
+                            <td scope="row" class="companyNames">{{c}}</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="actions-btns apdi-btns">
+                    <div class="actions-btns left-side-btn">
+                        <button type="button" class="btn btn-light pdac" (click)="openDialog()">Previous Deal Approver Conditions</button>                        
+                    </div>
+                    <div class="actions-btns right-side-btn">
+                        <button type="button" class="btn btn-outline back">Back</button>
+                        <button type="button" class="btn next">Next</button>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

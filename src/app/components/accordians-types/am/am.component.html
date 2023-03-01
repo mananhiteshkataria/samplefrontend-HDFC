@@ -1,0 +1,69 @@
+<div class="accordian-container">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true"
+            #example>
+            <mat-expansion-panel-header>
+                <mat-panel-title class="expansion-title">
+                    <mat-icon class="mat-icons" *ngIf="!example.expanded">add</mat-icon>
+                    <mat-icon class="mat-icons" *ngIf="example.expanded">remove</mat-icon>
+                    Approval Metrics
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="apdi-table w-75 m-auto">
+                <table class="table table-responsive align-middle">
+                    <thead class="table-heading">
+                        <tr>
+                            <th scope="col" style="padding-left: 32px;">Approver Level</th>
+                            <th scope="col">Approver User</th>
+                            <th class="text-center" scope="col">Status</th>
+                            <th scope="col">On</th>
+                            <th class="text-center" scope="col">Comments</th>
+                            <th class="text-center" scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-first-column">
+                            <td scope="row" class="companyNames">Level 1</td>
+                            <td>Devang G (RM)</td>
+                            <td class="text-center"><span class="badge rounded-pill status-pill completed">Completed</span></td>
+                            <td>Jhon Doe 10:30PM; 9 Oct 2022</td>
+                            <td class="text-center"><img src="../../../../assets/images/message-square.svg" alt=""></td>
+                            <td>
+                                <div class="action-icons">
+                                    <img src="../../../../assets/images/plus-sub-category.svg" alt="">
+                                    <img src="../../../../assets/images/trash.svg" alt="">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-first-column">
+                            <td scope="row" class="companyNames">Level 2</td>
+                            <td>John (RM)</td>
+                            <td class="text-center"><span class="badge rounded-pill status-pill pending">Pending</span></td>
+                            <td>_</td>
+                            <td class="text-center"><img src="../../../../assets/images/message-square.svg" alt=""></td>
+                            <td>
+                                <div class="action-icons">
+                                    <img src="../../../../assets/images/plus-sub-category.svg" alt="">
+                                    <img src="../../../../assets/images/trash.svg" alt="">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="table-first-column">
+                            <td scope="row" class="companyNames">Level 3</td>
+                            <td>Dinesh B (GH)</td>
+                            <td class="text-center"><span class="badge rounded-pill status-pill pending">Pending</span></td>
+                            <td>_</td>
+                            <td class="text-center"><img src="../../../../assets/images/message-square.svg" alt=""></td>
+                            <td>
+                                <div class="action-icons">
+                                    <img src="../../../../assets/images/plus-sub-category.svg" alt="">
+                                    <img src="../../../../assets/images/trash.svg" alt="">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

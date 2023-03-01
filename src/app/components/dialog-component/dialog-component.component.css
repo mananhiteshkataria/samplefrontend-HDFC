@@ -1,0 +1,30 @@
+#p1 {
+    padding-left: 25px;
+    color: grey;
+}
+
+.down {
+    margin-top: -60px;
+    left: 220px;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+}
+
+th,
+td {
+    text-align: center;
+}
+
+.close-button {
+    float: right;
+    top: -497px;
+    right: -730px;
+}
+
+input::placeholder {
+    text-align: right;
+}

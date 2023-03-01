@@ -1,0 +1,202 @@
+<div class="accordian-container">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true"
+            #example>
+            <mat-expansion-panel-header>
+                <mat-panel-title class="expansion-title">
+                    <mat-icon class="mat-icons" *ngIf="!example.expanded">add</mat-icon>
+                    <mat-icon class="mat-icons" *ngIf="example.expanded">remove</mat-icon>
+                    Facility
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div style="padding: 5px; margin: auto; width: 75%;">
+                
+                <mat-horizontal-stepper [labelPosition]="'bottom'" linear #stepper>
+                    <ng-template matStepperIcon="edit"><mat-icon class="icon">check</mat-icon></ng-template>
+
+                    <!-- FACILITY DETAILS SECTION -->
+
+                    <mat-step label="Facility Details" [stepControl]="facilityGroup">
+                        <h5>Facility Details</h5>
+                        <form [formGroup]="facilityGroup">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-label>Product Class</mat-label> <br>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Select</mat-label>
+                                        <mat-select formControlName="prod">
+                                            <mat-option *ngFor="let product of products"
+                                                [value]="product">{{product}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="prod.invalid">{{getProdError()}} </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-label>Facility Name</mat-label> <br>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Select</mat-label>
+                                        <mat-select formControlName="faci">
+                                            <mat-option *ngFor="let fac of facility"
+                                                [value]="facility">{{fac}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="faci.invalid">{{getFaciError()}} </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-label id="1">Amount (in Cr)</mat-label> <br>
+
+                                    <mat-form-field appearance="fill">
+                                        <input matInput placeholder="Amount" formControlName="amount">
+                                        <mat-error *ngIf="amount.invalid">{{getAmountError()}} </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-label>PSL Category</mat-label> <br>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Select</mat-label>
+                                        <mat-select formControlName="pa">
+                                            <mat-option *ngFor="let par of parmeet" [value]="par">{{par}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="faci.invalid">{{getPaError()}} </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-label> Facility Currency Indicator</mat-label><br><br>
+                                    <mat-button-toggle-group #toggleBtn="matButtonToggleGroup" formControlName="toggle">
+                                        <mat-button-toggle value="INR" style="font-weight: 400;">INR</mat-button-toggle>
+                                        <mat-button-toggle value="FCY" style="font-weight: 400;">FCY</mat-button-toggle>
+                                    </mat-button-toggle-group>
+                                    <br>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-label>Benchmark/Reset Frequency </mat-label> <br>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Select</mat-label>
+                                        <mat-select formControlName="sa">
+                                            <mat-option *ngFor="let san of sandhu" [value]="san">{{san}}</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="sa.invalid">{{getSaError()}} </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <button matStepperNext [disabled]="facilityGroup.invalid" mat-raised-button
+                                color="primary">Next</button>
+                        </form>
+                        <br><br>
+                        <!-- <button matStepperNext [disabled]="facilityGroup.invalid" (click)="method(first,stepper)" mat-raised-button color="primary">Next</button> -->
+                    </mat-step>
+
+                    <!-- TENOR & REPAYMENT SECTION -->
+
+                    <mat-step [stepControl]="tenorGroup" label="Tenor & Repayment Details">
+                        <ng-template matStepperIcon="edit"><mat-icon class="icon">check</mat-icon></ng-template>
+                        <h5>Facility Details</h5>
+                        <form [formGroup]="tenorGroup">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-label>Moratorium in months</mat-label><br>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Select</mat-label>
+                                        <mat-select matNativeControl required formControlName="months">
+                                            <mat-option value="0">0</mat-option>
+                                            <mat-option value="1">1</mat-option>
+                                            <mat-option value="2">2</mat-option>
+                                            <mat-option value="3">3</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="months.invalid">{{getMonthsErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-label>Door to Door Tenor</mat-label><br>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Select</mat-label>
+                                        <mat-select matNativeControl required formControlName="dtd">
+                                            <mat-option value="0">&lt;1 Month</mat-option>
+                                            <mat-option value="1">1 Month</mat-option>
+                                            <mat-option value="2">2 Months</mat-option>
+                                            <mat-option value="3">3 Months</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="dtd.invalid">{{getdtdErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 input-prf">
+                                    <div>
+                                    <mat-label>Principal Repayment Freqency</mat-label><br>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Select</mat-label>
+                                        <mat-select matNativeControl required formControlName="payment">
+                                            <mat-option value="0">Monthly</mat-option>
+                                            <mat-option value="1">Quaterly</mat-option>
+                                            <mat-option value="2">Semi-annual</mat-option>
+                                            <mat-option value="3">Annual</mat-option>
+                                            <mat-option value="4">Bullet</mat-option>
+                                            <mat-option value="5">Structured Repayment </mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="dtd.invalid">{{getpaymentErrorMessage()}}</mat-error>
+                                    </mat-form-field>
+                                </div>
+                                    <div class="block" style="width: 20px; height: 30px;">
+                                        <!-- <mat-icon>add_box</mat-icon> -->
+                                        <button mat-button (click)="openDialog()"><span
+                                                class="material-icons add-icon" >add</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <button matStepperPrevious mat-raised-button color="primary">Previous</button> &nbsp; &nbsp;
+                            <button matStepperNext [disabled]="tenorGroup.invalid" mat-raised-button
+                                color="primary">Next</button>
+                        </form>
+                    </mat-step>
+
+                    <!-- FEES SECTION -->
+
+                    <mat-step label="Fees" [stepControl]="feeGroup">
+                        <ng-template matStepperIcon="edit"><mat-icon class="icon">check</mat-icon></ng-template>
+                        <form [formGroup]="feeGroup">
+                            <h5>Facility Details</h5>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-label>Processing Fee (₹)</mat-label><br>
+                                    <mat-form-field appearance="outline">
+                                        <input matInput placeholder="9,999.00" formControlName="profee">
+                                        <mat-error *ngIf="profee.invalid">{{getProFeeError()}} </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-label>IB Fee (₹)</mat-label><br>
+                                    <mat-form-field appearance="outline">
+                                        <input matInput placeholder="9,999.00" formControlName="ibfee">
+                                        <mat-error *ngIf="ibfee.invalid">{{getIbFeeError()}} </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <mat-card style="width: 400px; height: 100px; background-color: whitesmoke;">
+                                        <mat-card-content>Total Fees (₹)</mat-card-content><br>
+                                        <mat-card-content>-</mat-card-content>
+                                    </mat-card>
+                                </div>
+                            </div>
+                        </form>
+                        <br><br>
+                        <button matStepperPrevious mat-raised-button color="primary">Previous</button>
+                    </mat-step>
+
+                </mat-horizontal-stepper>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

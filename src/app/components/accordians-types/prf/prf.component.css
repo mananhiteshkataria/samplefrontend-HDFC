@@ -1,0 +1,105 @@
+@import url("../accordian.css");
+.accordian-contents{
+    display: inline-block;
+    margin: 20px auto;
+    gap: 4px;
+    overflow-x: hidden;
+}
+.compute-actions{
+    display: flex;
+    gap: 1rem;
+}
+.compute-btn{
+    color: #1C3FCA;
+    border-color: #1C3FCA;
+}
+.accordian-forms{
+    display: flex;
+    flex-direction: column;
+}
+.accordian-forms p {
+    font-size: 16px;
+    font-weight: 500;
+}
+.accordian-forms label {
+    font-size: 14px;
+    font-weight: 400;    
+}
+.form-control{
+    border-color: #ccc;
+    box-shadow: none;
+    width: 400px;
+}
+.first-block{
+    background-color: #F3F6FD;
+    width: 824px;
+    height: 96px;
+    border-radius: 4px;    
+}
+.first-block-content{
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    padding: 20px 0;
+}
+.first-block-left{
+    padding-left: 32px;
+    width: 50%;
+}
+.second-block{
+    background-color: #F3F6FD;
+    width: 824px;
+    height: 368px;
+    border-radius: 4px;
+}
+.second-block-content{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    padding: 20px 0;
+}
+.second-block-main{
+    display: flex;
+    font-size: 14px;
+}
+.second-block-left{
+    padding-left: 16px;
+    width: 50%;
+}
+.reccom{
+    padding-left: 32px;
+    font-weight: 500;
+    font-size: 16px;
+}
+.low-color{
+    color: #6B7280;
+}
+@media only screen and (max-width:992px) {
+    .first-block{        
+        width: 600px;        
+    }
+    .second-block{        
+        width: 600px;    
+    }
+}
+@media only screen and (max-width:768px) {
+    .first-block{        
+        width: 450px;        
+    }
+    .second-block{        
+        width: 450px;  
+        height: 500px;      
+    }
+}
+@media only screen and (max-width:576px) {
+    .accordian-contents{
+        overflow-x: scroll;
+    }
+    .first-block{        
+        width: 400px;                
+    }
+    .second-block{        
+        width: 400px;  
+        height: 500px;          
+    }
+}

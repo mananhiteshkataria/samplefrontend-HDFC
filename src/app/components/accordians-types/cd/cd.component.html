@@ -1,0 +1,195 @@
+<div class="accordian-container">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true"
+            #example>
+            <mat-expansion-panel-header>
+                <mat-panel-title class="expansion-title">
+                    <mat-icon class="mat-icons" *ngIf="!example.expanded">add</mat-icon>
+                    <mat-icon class="mat-icons" *ngIf="example.expanded">remove</mat-icon>
+                    Customer Details
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row w-75 m-auto">
+                <mat-horizontal-stepper class="mat-stepper-horizontal" #stepper>
+                    <!-- <mat-horizontal-stepper class="mat-stepper-horizontal" linear #stepper> -->
+                    <ng-template matStepperIcon="edit">
+                        <mat-icon class="icon">check</mat-icon>
+                    </ng-template>
+                    <mat-step [stepControl]="form" class="firststep" #first label="Customer Details" completed="false">
+                        <h5>Customer Details</h5>
+                        <form [formGroup]="form" (ngSubmit)="submit()">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="label">Customer-Name</label>
+                                        <input class='form-control' id="name" formControlName="name"
+                                            placeholder="Enter Customer Name" list="clients" name="myclients"
+                                            type="text" /><br>
+                                        <datalist id="clients">
+                                            <option value="ABC">
+                                            <option value="DEF">
+                                            <option value="GHI">
+                                            <option value="JKL">
+                                            <option value="MNO">
+                                        </datalist>
+                                        <span id="error" *ngIf="f['name'].touched && f['name'].invalid"
+                                            class="alert alert-danger">
+                                            <span id="error"
+                                                *ngIf="f['name'].errors && f['name'].errors['required']">Name is
+                                                required.</span>
+                                            <span id="error"
+                                                *ngIf="f['name'].errors && f['name'].errors['minlength']">Name should be
+                                                3
+                                                character.</span>
+                                        </span>
+                                    </div>
+                                    <div class="col">
+                                        <label for="toggle" class="label">Type of Customer</label>
+                                        <mat-button-toggle-group id="toggle" name="typeofcustomer"
+                                            aria-label="type of customer" value="ETB">
+                                            <mat-button-toggle (click)="toggle_NTB()"
+                                                value="ETB">ETB</mat-button-toggle>
+                                            <mat-button-toggle (click)="toggle_NTB()"
+                                                value="NTB">NTB</mat-button-toggle>
+                                        </mat-button-toggle-group>
+                                    </div>
+                                </div>
+                                <ng-container class="form-group">
+                                    <ng-container *ngIf="show1">
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="pan" class="label">Pan-Card</label>
+                                                <input class="form-control" id="pan" placeholder="Enter Pan"
+                                                    formControlName="pan" type="text"><br>
+                                                <span id="error" *ngIf="f['pan'].touched && f['pan'].invalid"
+                                                    class="alert alert-danger">
+                                                    <span id="error"
+                                                        *ngIf="f['pan'].errors && f['pan'].errors['required']">
+                                                        PAN is required.</span>
+                                                    <span id="error"
+                                                        *ngIf="f['pan'].errors && f['pan'].errors['minlength']">
+                                                        PAN should be 10 character.
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <div class="col">
+                                                <label class="label">RAROC</label>
+                                                <select class="form-select" matNativeControl formControlName="raroc">
+                                                    <option>None</option>
+                                                    <option value="<25%">
+                                                        <25% </option>
+                                                    <option value=">=25%-<=30%">>=25%-<=30% </option>
+                                                    <option value=">30%-<=35%">>30%-<=35% </option>
+                                                    <option value=">35-<=40%">>35-<=40% </option>
+                                                </select>
+
+                                                <span id="error" *ngIf="f['raroc'].touched && f['raroc'].invalid"
+                                                    class="alert alert-danger">
+                                                    <span id="error"
+                                                        *ngIf="f['raroc'].errors && f['raroc'].errors['required']">Raroc
+                                                        is
+                                                        required.
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </ng-container>
+                                    <ng-container *ngIf="!show1">
+                                        <label for="raroc" class="label">RAROC</label>
+                                        <input class="form-control" id="raroc" placeholder="20%" formControlName="raroc"
+                                            type="text"><br>
+                                        <span id="error" *ngIf="f['raroc'].touched && f['raroc'].invalid"
+                                            class="alert alert-danger">
+                                            <span id="error"
+                                                *ngIf="f['raroc'].errors && f['raroc'].errors['required']">Raroc is
+                                                required.
+                                            </span>
+                                        </span>
+                                    </ng-container>
+                                </ng-container>
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn" id="button" (click)="method(first,stepper)"
+                                        [disabled]="form.invalid" mat-button matStepperNext>Next</button>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-step>
+                    <mat-step #second label="Rating Model" completed="false">
+                        <div class="row">
+                            <h6 style="color: gray; font-weight: 400;">Internal Rating Model</h6>
+                            <mat-form-field appearance="fill">
+                                <mat-label>Select</mat-label>
+                                <mat-select [formControl]="drop" required>
+                                    <mat-option value="lm">Large Corporate Model</mat-option>
+                                    <mat-option value="nm">NBFC Model</mat-option>
+                                    <mat-option value="sm">SME Model</mat-option>
+                                    <mat-option value="tm">Trader Model</mat-option>
+                                    <mat-error *ngIf="drop.hasError('required')">Please choose an option</mat-error>
+                                </mat-select>
+                            </mat-form-field>
+                            <div class="col" style="margin-top: -1.8rem;">
+                                <label for="">Internal Rating Model</label>
+                                <div class="rating">
+                                    <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                    <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label>
+                                    <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                    <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                    <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                    <input type="radio" name="rating" value="0" id="5"><label for="0">☆</label>
+                                    <input type="radio" name="rating" value="11" id="4"><label for="11">☆</label>
+                                    <input type="radio" name="rating" value="12" id="3"><label for="12">☆</label>
+                                </div>
+                            </div>
+                            <div>
+                                <mat-label for="toggle" class="label">DRUL/Recourse/SBLC Available</mat-label>
+                                <mat-button-toggle-group id="toggle" name="typeofcustomer" aria-label="type of customer"
+                                    value="ETB">
+                                    <mat-button-toggle (click)="toggle()" value="ETB">Yes</mat-button-toggle>
+                                    <mat-button-toggle (click)="toggle()" value="NTB">No</mat-button-toggle>
+                                </mat-button-toggle-group>
+                            </div>
+                            <!-- <div class="row">
+                                <h5 style="color: gray; font-weight: 400;">DRUL/Recourse/SBLC Available</h5>
+                            </div> -->
+                            <div class="col" style="margin-top: 10px;">
+                                <ng-container *ngIf="show">
+                                    <h6 style="color: gray; font-weight: 400;">Support Entity Rating Model</h6>
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Select</mat-label>
+                                        <mat-select [formControl]="drop1" required>
+                                            <mat-option value="lm">Large Corporate Model</mat-option>
+                                            <mat-option value="nm">NBFC Model</mat-option>
+                                            <mat-option value="sm">SME Model</mat-option>
+                                            <mat-option value="tm">Trader Model</mat-option>
+                                            <mat-error *ngIf="drop.hasError('required')">Please choose an
+                                                option</mat-error>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </ng-container>
+                            </div>
+                            <div class="col" style="margin-top:8px;">
+                                <ng-container class="col" *ngIf="show">
+                                    <label for="">Support Entity Rating Model</label>
+                                    <div class="rating">
+                                        <input type="radio" name="rating1" value="6" id="6"><label for="6">☆</label>
+                                        <input type="radio" name="rating1" value="7" id="7"><label for="7">☆</label>
+                                        <input type="radio" name="rating1" value="8" id="8"><label for="8">☆</label>
+                                        <input type="radio" name="rating1" value="9" id="9"><label for="9">☆</label>
+                                        <input type="radio" name="rating1" value="10" id="10"><label for="10">☆</label>
+                                        <input type="radio" name="rating1" value="13" id="13"><label for="13">☆</label>
+                                        <input type="radio" name="rating1" value="14" id="14"><label for="14">☆</label>
+                                        <input type="radio" name="rating1" value="15" id="15"><label for="15">☆</label>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn" id="button" (click)="method(first,stepper)"
+                                [disabled]="form.invalid">Submit</button>
+                        </div>
+                    </mat-step>
+                </mat-horizontal-stepper>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

@@ -1,0 +1,33 @@
+.accordian-container {
+    margin: 20px 16px 20px 16px;
+}
+
+.expansion-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    color: #374151;
+}
+
+.mat-icons {
+    color: #4F6FDF;
+}
+
+.actions-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.actions-btns .next {
+    color: white;
+    background-color: #1C3FCA;
+}
+
+.actions-btns .back {
+    color: #1C3FCA;
+}

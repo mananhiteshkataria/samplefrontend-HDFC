@@ -1,0 +1,87 @@
+<div class="accordian-container">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" hideToggle="true"
+            #example>
+            <mat-expansion-panel-header>
+                <mat-panel-title class="expansion-title">
+                    <mat-icon class="mat-icons" *ngIf="!example.expanded">add</mat-icon>
+                    <mat-icon class="mat-icons" *ngIf="example.expanded">remove</mat-icon>
+                    Pricing Recommendation and Finalization
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div style="display: flex; align-items: center;">
+            <div class="accordian-contents">
+                <div class="accordian-forms">
+                    <p>Finalization</p>
+                    <label>Proposed ROI</label>
+                </div>
+                <div class="compute-actions">
+                    <input class="form-control" type="text">
+                    <button type="button" class="btn btn-outline compute-btn">Compute</button>
+                </div>
+                <div class="first-block mt-3">
+                    <div class="first-block-content">
+                        <div class="first-block-left">
+                            <p>NIM</p>
+                            <p>_</p>
+                        </div>
+                        <div class="first-block-right">
+                            <p>NIM with full PSL cost</p>
+                            <p>_</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="second-block mt-3">
+                    <div class="second-block-content">
+                        <div>
+                            <p class="reccom">Recommendation</p>
+                        </div>
+                        <div class="second-block-main">
+                            <div class="second-block-left">
+                                <div class="second-block-left left-1">
+                                    <p class="low-color">Regular Floor (Benchmark)</p>
+                                    <p>8.10%</p>
+                                </div>
+                                <div class="second-block-left left-2">
+                                    <p class="low-color">Treasury Refernece Rate</p>
+                                    <p>8.10%</p>
+                                </div>
+                                <div class="second-block-left left-3">
+                                    <p class="low-color">Weighted Average Tenor</p>
+                                    <p>3Y</p>
+                                </div>
+                                <div class="second-block-left left-4">
+                                    <p class="low-color">Door to Door Tenor</p>
+                                    <p>5Y</p>
+                                </div>
+                            </div>
+                            <div class="second-block-right">
+                                <div class="second-block-right right-1">
+                                    <p class="low-color">Base RBP</p>
+                                    <p>8.60%</p>
+                                </div>
+                                <div class="second-block-right right-2">
+                                    <p class="low-color">PSL Benefits</p>
+                                    <p>-0.25%</p>
+                                </div>
+                                <div class="second-block-right right-3">
+                                    <p class="low-color">Final RBP</p>
+                                    <p>8.35%</p>
+                                </div>
+                                <div class="second-block-right right-4">
+                                    <p class="low-color">Benchmark Reset Frequency</p>
+                                    <p>T Bills 2M</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions-btns">
+                    <button type="button" class="btn btn-outline back">Back</button>
+                    <button type="button" class="btn next">Next</button>
+                </div>
+            </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

@@ -1,0 +1,52 @@
+@import url("../accordian.css");
+
+.mat-form-field {
+    width: 25rem;
+}
+
+.mat-stepper-horizontal {
+    margin-top: 8px;
+}
+
+.mat-mdc-form-field {
+    margin-top: 16px;
+}
+
+.form-control {
+    width: 15rem;
+}
+
+mat-form-field {
+    width: 25rem;
+}
+
+.mat-button-toggle {
+    background-color: #ecedf3;
+    color: black;
+}
+.mat-button-toggle-checked {
+    background-color: #1c3fca;
+    color: white;
+}
+
+mat-button-toggle-group {
+    display: flex;
+    width: 8rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    /* background-color: #1c3fca; */
+}
+.input-prf{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.add-icon{
+    color: #1c3fca;
+    border: 1px solid #1c3fca;
+    border-radius: 4px;
+    margin-top: 12px;
+    padding: 12px;
+}

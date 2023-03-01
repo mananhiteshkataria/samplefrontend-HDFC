@@ -1,0 +1,60 @@
+@import url("../accordian.css");
+
+table {
+    border-radius: 10px;
+    border: 1px solid #4b55631e;
+    overflow-x: scroll;
+}
+.apdi-table{
+    overflow-x: scroll;
+}
+.table-heading {
+    background-color: #EBF3FE;
+    color: #4B5563;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.table-first-column {
+    font-weight: 500;
+    font-size: 14px;
+    color: #14192A;
+}
+
+.companyNames {
+    padding-left: 32px;
+}
+
+tbody td {
+    color: #374151;
+}
+
+.actions-btns .pdac {
+    background-color: white;
+    border-color: #4b556346;
+}
+
+.apdi-btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.status-pill {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    background-color: white;
+}
+.completed{
+    color: #00875F;
+    border: 1px solid #00875F;
+}
+.pending{
+    color: #368CD3;
+    border: 1px solid #368CD3;
+}
+.action-icons{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
